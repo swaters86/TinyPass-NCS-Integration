@@ -1,4 +1,6 @@
 /**
+ * Author: Steve Waters
+ * 
  * Displays the TinyPass login link. It will display a message when the visitor is logged in aka has access. 
  *
  * An Ajax call in the defaultTop.pbo Macro sends the return URL this script.

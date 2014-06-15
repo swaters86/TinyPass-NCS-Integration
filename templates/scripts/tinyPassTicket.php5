@@ -1,4 +1,6 @@
 /**
+ * Author: Steve Waters
+ *
  * Displays the TinyPass login "ticket" button. It will not display the button when the visitor has access.
  *
  * Reads several settings from the Publicus.ini file.

@@ -1,4 +1,6 @@
 /**
+ * Author: Steve Waters
+ *
  * This script is called from the tinyPassLogin_ovr.pbs template which is 
  * requested via an Ajax script (see header.pbo Macro)
 **/
