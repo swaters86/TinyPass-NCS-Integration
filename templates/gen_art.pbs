@@ -1,0 +1,7 @@
+<!-- 
+	Default Template for article pages , calls the PBS article tag
+	The PBS article tag uses the article.pbo Object File.
+-->
+
+<pbs:article extrapictures="1">
+	

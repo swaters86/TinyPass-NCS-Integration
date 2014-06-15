@@ -1,0 +1,37 @@
+[%{comments=1}
+  <!--
+   Main Object File for Article Content, for the paywall preview version of the content. 
+  --> 
+%]
+
+<!-- Story Title -->
+<%Head%>
+  
+<!-- Main Picture for the Story --> 
+<%MainPicture%>
+    
+<!-- Article Summary --> 
+<%Summary%>
+
+<!--
+    THIS IS THE ONLY DIFFERENCE BETWEEN ARTICLE1.PBO AND THIS FILE 
+    Paragraph Items are truncated so a shorter version of hte article text is 
+    printed on the screen (which is the paywall view) This principle could obviosly be 
+    applied to other elements int his template. 
+ --> 
+<%ParagraphItems$c(1,400)%>
+
+
+<script type="text/javascript">
+	// We're setting the SingleSaleId here so it can be cached with the article.
+	singleSaleId = '<%SingleSaleID%>';
+</script>
+
+<!-- Set Access Variables and Show/Hide Div containers for the TinyPass paywall -->
+<pbs:#sessioninfopostproc_1#>	
+			
+
+    
+    
+    
+ 

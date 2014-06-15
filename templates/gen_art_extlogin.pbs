@@ -1,0 +1,7 @@
+<!-- 
+	Default Extended Login Template for article pages , calls the PBS article tag
+	The PBS article tag will use the articleExtLogin.pbo Object File, because 
+	of _ExtLogin extention in the name. This should be for your paywall preview content. 
+-->
+
+<pbs:article extrapictures="1">

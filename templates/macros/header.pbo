@@ -1,0 +1,53 @@
+<!--
+	This code should go in between the head tags of your site 
+-->
+
+<script type="text/javascript" src="http://code.tinypass.com/tinypass.js"></script>
+
+<script type="text/javascript">
+	
+  $(window).load(function () {
+
+      // Injects the user's Session Information into the #my-account DIV tag
+      $.ajax({
+          type: "GET",
+          url: '/section/tinyPassLink&omniture=0&returnURL=' + currentDomainEncoded + currentRequestEncoded,
+          cache: false,
+          success: function (data) {
+              $('#my-account').html(data);
+          }
+      });
+
+      // Get the original code here: http://www.netlobo.com/url_query_string_javascript.html
+      function gup(name) {
+          name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+          var regexS = "[\\?&]" + name + "=([^&#]*)";
+          var regex = new RegExp(regexS);
+          var results = regex.exec(window.location.href);
+          if (results === null) return "";
+          else return results[1];
+      }
+
+      var userRef = gup('user_ref');
+
+      if (userRef !== '') {
+
+          $.ajax({
+              type: "GET",
+              url: "/section/tinyPassLogin&omniture=0",
+              cache: false,
+              success: function (data) {
+                  window.location = currentDomain + currentRequest;
+              }
+          });
+
+      } else {
+          // Do nothing 
+      }
+
+  });
+	
+</script>
+
+		
+ 

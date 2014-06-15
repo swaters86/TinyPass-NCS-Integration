@@ -1,0 +1,98 @@
+<!-- sessioninfopostproc1.pbo -->
+<!-- Sets access variables based on the users session file --> 
+<%CurrentDomain$S("setAccessVariables.js")%>
+
+<script type="text/javascript">
+
+// This is callback function is fired by the tinyPassTicket.php5 API script after the user signs into TinyPass. 
+// You could probaly move this function to the header so the estra refresh happen more quickly. 
+function refreshPage() {
+
+	// We're making an Ajax call to this template so the SingSaleId is written to the user's session file.
+	$.ajax({
+      type: "GET",
+      url: "/section/tinyPassLogin&omniture=0",
+      cache:false,
+      success: function (data) {
+      	// A refresh is required so the system recongizes the user has accesss to the article
+      	// The above template that is being loaded using Ajax will write PREMIUM1 to the session file 
+        location.reload(true);
+      }
+	});
+	 	
+}	
+	
+$(document).ready(function () {
+
+	  /* 
+		  Check to see if article is protected. 
+		  Articles with a singleSaleId are protected
+	  */
+	  
+    if (singleSaleId !== '') {
+
+	      // Getting containers in markup by IDs and setting them to variables
+        tpContainer1 = document.getElementById("tp-container-1");
+
+        tpContainer2 = document.getElementById("tp-container-2");
+
+				// Setting variables to Object Script variables which are created in setAccessVariables.js 	
+				// This might not be required in this solution, so you could try removing it ;) 		
+        var singleSaleStatus = '<%singleSaleStatus%>';
+
+        var allowedViewsLeft = <%allowedViewsLeft%> ;
+
+        /*
+	        Getting counter container by ID and inserting the count value into it. 
+	        See the allowedViewsLeft variable being set. 
+        */
+        
+        var tpCounter = document.getElementById("tp-counter");
+
+        tpCounter.innerHTML = allowedViewsLeft;
+
+        // If allowed views left is greater than 0, display counter
+        if (allowedViewsLeft > 0) {
+            tpContainer2.style.display = 'block';
+            tpContainer1.style.display = 'none';
+
+        } else {
+            tpContainer2.style.display = 'none';
+            tpContainer1.style.display = 'block';
+        }
+
+        // If single sale status value is not empty then hide containers.       
+        if (singleSaleStatus !== '') {
+            tpContainer2.style.display  = 'none';
+            tpContainer1.style.display  = 'none';
+        }
+
+    } else {
+    	
+    	  // Hide containers for unprotected articles. 
+    	  var tpContainer1 = document.getElementById("tp-container-1");
+
+        var tpContainer2 = document.getElementById("tp-container-2");
+        
+        tpContainer2.style.display = 'none';
+
+        tpContainer1.style.display = 'none';
+
+    }
+
+});
+	
+</script>
+
+
+<!-- Displays TinyPass Ticket Button --> 
+<div id="tp-container-1">	
+<%CurrentDate$S("tinyPassTicket.php5")%> 
+</div>
+
+<!-- Displays View Counter --> 
+<div id="tp-container-2">	
+You have <strong id="tp-counter"></strong> view(s) left.
+</div>
+
+

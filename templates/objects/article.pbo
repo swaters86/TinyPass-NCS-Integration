@@ -1,0 +1,27 @@
+[%{comments=1}
+  <!--
+   Main Object File for Article Content
+  --> 
+%]
+
+<!-- Story Title -->
+<%Head%>
+  
+<!-- Main Picture for the Story --> 
+<%MainPicture%>
+    
+<!-- Article Summary --> 
+<%Summary%>
+
+<!-- Paragraph Items --> 
+<%ParagraphItems%>
+
+
+<script type="text/javascript">
+	// We're setting the SingleSaleId here so it can be cached with the article.
+	singleSaleId = '<%SingleSaleID%>';
+</script>
+
+<!-- Set Access Variables and Show/Hide Div containers for the TinyPass paywall -->
+<pbs:#sessioninfopostproc_1#>	
+			
