@@ -40,22 +40,23 @@ This object file is updated and is persistent for each new client, so informatio
 It does the following: 
 
 
-*Gets the tinyPassLogin_ovr.pbs template via Ajax which will write PREMIUM1 to the session file for the user.  This only happens when the refreshPage callback function is called from one of the API scripts such as tinyPassLink.php5 and tinyPassTicket.php5
+* Gets the tinyPassLogin_ovr.pbs template via Ajax which will write PREMIUM1 to the session file for the user.  This only happens when the refreshPage callback function is called from one of the API scripts such as tinyPassLink.php5 and tinyPassTicket.php5
 
-*If the tinyPassLogin template is retrieved successfully then the page is reloaded, this forces NEWSCYCLE Digital to read the session file again which will then tell the application to use the gen_art.pbs template. 
+* If the tinyPassLogin template is retrieved successfully then the page is reloaded, this forces NEWSCYCLE Digital to read the session file again which will then tell the application to use the gen_art.pbs template. 
 
-*When the document is ready, this object file will check to see if the singleSaleId variable (which is declared in the article.pbo and articleExtLogin.pbo Object Files) has a value or not; Otherwise, it will hide the DIV containers. One of these DIV contains a Object Script call for the tinyPassticket.php5 script and the other container contains markup for displaying the allowed views left count. These containers are #tp-container-1 and #tp-container-1, respectively. 
+* When the document is ready, this object file will check to see if the singleSaleId variable (which is declared in the article.pbo and articleExtLogin.pbo Object Files) has a value or not; Otherwise, it will hide the DIV containers. One of these DIV contains a Object Script call for the tinyPassticket.php5 script and the other container contains markup for displaying the allowed views left count. These containers are #tp-container-1 and #tp-container-1, respectively. 
 
-*If the singleSaleId variable has a value, then the JS script in this file will:
+* If the singleSaleId variable has a value, then the JS script in this file will:
+
 - Declare a variable for each of the aforementioned containers (which also happens when the script needs to hide these containers)
 
--Declares a variable for the "allowed views count" (this value is retrieved from the session file and the <%allowedViewsLeft%> variable is declared in the setAccessVariables.js file).
--Declares a variable for the “single sale status” 
--Declares a variable for the #tp-counter container and sets the contents of this container of the value of the **allowedViesLeft** variable.
--Checks to see if the allowedViewsLeft container is greater than 0, if so then it will show the allowed views left container and hide the tinypass ticket button. Otherwise, it will do the opposite of this. 
--Checks to see if the singleSaleStatus varaible is empty, if so then it will hide both of the containers. This part might not be required in this solution... 
+- Declares a variable for the "allowed views count" (this value is retrieved from the session file and the <%allowedViewsLeft%> variable is declared in the setAccessVariables.js file).
+- Declares a variable for the “single sale status” 
+- Declares a variable for the #tp-counter container and sets the contents of this container of the value of the **allowedViesLeft** variable.
+- Checks to see if the allowedViewsLeft container is greater than 0, if so then it will show the allowed views left container and hide the tinypass ticket button. Otherwise, it will do the opposite of this. 
+- Checks to see if the singleSaleStatus varaible is empty, if so then it will hide both of the containers. This part might not be required in this solution... 
 
-*This Object File also calls the tinyPassTicket.php5 script, which is loading on each article request (regardless if it's protected or not...)
+* This Object File also calls the tinyPassTicket.php5 script, which is loading on each article request (regardless if it's protected or not...)
 
 ## tinyPassLink.php5
 
