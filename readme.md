@@ -1,6 +1,6 @@
 # TinyPass Integration
 
-**Please note:** This integration never went into production, however, it was able to function as a basic TinyPass paywall solution on EO Media's Capital Press (CP) staging site. 
+**Please note:** This integration never went into production, however, it was able to function as a TinyPass paywall solution in the customer's site. After extensive testing, it was proven to work well in this environment. 
 
 This integration uses the TinyPass API, which has been documented here: http://developer.tinypass.com/
 
@@ -47,7 +47,7 @@ It does the following:
 *   If the singleSaleId variable has a value, then the JS script in this file will:
 - Declare a variable for each of the aforementioned containers (which also happens when the script needs to hide these containers)
 - Declares a variable for the "allowed views count" (this value is retrieved from the session file and the <%allowedViewsLeft%> variable is declared in the setAccessVariables.js file).
-- Declares a variable for the ìsingle sale statusî 
+- Declares a variable for the ‚Äúsingle sale status‚Äù 
 - Declares a variable for the #tp-counter container and sets the contents of this container of the value of the **allowedViesLeft** variable.
 - Checks to see if the allowedViewsLeft container is greater than 0, if so then it will show the allowed views left container and hide the tinypass ticket button. Otherwise, it will do the opposite of this. 
 - Checks to see if the singleSaleStatus varaible is empty, if so then it will hide both of the containers. This part might not be required in this solution... 
@@ -80,7 +80,7 @@ This file contains the main API class for TinyPass. PLEASE be sure to update the
 
 ## header.pbo 
 
-This Macro has an Ajax call which retrieves the tinyPassLink_ovr.pbs template (remember it?) and injects it into a DIV tag with a selector ID of #my-account. You can change this selector if you want! You should add this DIV tag to somewhere in the MASTHEAD area for your site, or wherever you think this link should be displayed.  This Macro also contains a script reference for the tinypass.js library script (I would ask TinyPass about this one , this might be a script that interacts with the cookes this API creates). Lastly, this Macro contains a function that searches for ìuser_refî in the URL, if it is present then the tinyPassLogin_ovr.pbs template is called again using AJAX. This was added later in the project, but you might be able to remove it. 
+This Macro has an Ajax call which retrieves the tinyPassLink_ovr.pbs template (remember it?) and injects it into a DIV tag with a selector ID of #my-account. You can change this selector if you want! You should add this DIV tag to somewhere in the MASTHEAD area for your site, or wherever you think this link should be displayed.  This Macro also contains a script reference for the tinypass.js library script (I would ask TinyPass about this one , this might be a script that interacts with the cookes this API creates). Lastly, this Macro contains a function that searches for ‚Äúuser_ref‚Äù in the URL, if it is present then the tinyPassLogin_ovr.pbs template is called again using AJAX. This was added later in the project, but you might be able to remove it. 
 
 
 
